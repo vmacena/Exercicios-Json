@@ -1,0 +1,72 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+	<div id="output">
+		<h2>Receita de parmegiana</h2>
+		<p>Tempo de preparo: 1h30min</p>
+		<h3>Ingredientes:</h3>
+		<ul>
+			<script>
+				let receita = {
+					'titulo': 'Parmegiana',
+					'tempoDePreparo': "1h30min",
+					'ingredientes': ['500g de carne (maminha, alcatra ou filé mignon)', '200g de queijo mussarela', '100g de queijo parmesão ralado', '2 ovos batidos', '1 xícara de farinha de rosca', '1 xícara de farinha de trigo', '2 xícaras de molho de tomate', '2 colheres de sopa de azeite', '1 cebola picada', '3 dentes de alho picados', 'sal e pimenta-do-reino a gosto', 'óleo para fritar'],
+					'preparo': ['Corte a carne em bifes de aproximadamente 1 cm de espessura', 'Tempere os bifes com sal e pimenta-do-reino a gosto', 'Passe os bifes na farinha de trigo, nos ovos batidos e na farinha de rosca', 'Frite os bifes em óleo quente até dourar dos dois lados', 'Em outra panela, refogue a cebola e o alho no azeite até ficarem dourados', 'Acrescente o molho de tomate e deixe cozinhar por alguns minutos', 'Em uma travessa, coloque uma camada de molho, seguida dos bifes fritos e, por cima, coloque a mussarela e o parmesão ralado', 'Repita as camadas até acabar com uma camada de queijo por cima', 'Leve ao forno preaquecido a 180°C por cerca de 20 minutos, ou até que o queijo esteja derretido e gratinado']
+				};
+                for (let i = 0; i < receita.ingredientes.length; i++) {
+                    document.write("<li>" + receita.ingredientes[i] + "</li>");
+                }
+            </script>
+        </ul>
+        <h3>Preparo:</h3>
+        <ol>
+            <script>
+                for (let i = 0; i < receita.preparo.length; i++) {
+                    document.write("<li>" + receita.preparo[i] + "</li>");
+                }
+            </script>
+        </ol>
+        <button onclick="verificarIngredientes()">Verificar quantidade de ingredientes</button>
+        <script>
+            function verificarIngredientes() {
+              let quantidadeIngredientes = receita.ingredientes.length;
+              alert("Esta receita contém " + quantidadeIngredientes + " ingredientes.");
+            }
+        </script>
+        
+        <!-- LISTA NÃO ORDENADA -->
+        <button onclick="criarLista()">Criar lista não ordenada de ingredientes</button>
+
+        <script>
+            function criarLista() {
+                let lista = "<ul>";
+                for (let i = 0; i < receita.ingredientes.length; i++) {
+                  lista += "<li>" + receita.ingredientes[i] + "</li>";
+                }
+                lista += "</ul>";
+                document.getElementById("output").insertAdjacentHTML("beforeend", lista);
+              }              
+        </script>
+
+        <button onclick="criarListaPreparo()">Criar lista de preparo</button>
+
+        <script>
+            function criarListaPreparo() {
+                let lista = document.createElement("ol");
+                for (let i = 0; i < receita.preparo.length; i++) {
+                    let itemLista = document.createElement("li");
+                    let textoItemLista = document.createTextNode(receita.preparo[i]);
+                    itemLista.appendChild(textoItemLista);
+                    lista.appendChild(itemLista);
+                }
+                document.getElementById("output").appendChild(lista);
+            }            
+        </script>
+    </div>
+</body>
+</html>
